@@ -1,0 +1,53 @@
+
+<div class="wrap">
+  <div class="search">
+     <input type="text" [(ngModel)] = 'searchPoekman'  class="searchTerm" placeholder="What are you looking for?">
+     <button type="submit" class="searchButton" (click) = 'displayData()'>
+      <i class="lnr lnr-magnifier"></i>
+    </button>
+  </div>
+</div>
+
+
+<div class="card mainCard">
+
+ <div *ngIf = 'intialView'>
+
+  <div class="text-center font-weight-bold">{{pokemanName.charAt(0).toUpperCase() + pokemanName.slice(1)}}</div>
+
+  <div class="readMore text-center" (click) = 'showDetails()'>Read More</div>
+ </div>
+
+ <div *ngIf="!intialView">
+
+  <span class="lnr lnr-arrow-left" style="cursor: pointer;" (click) = 'goBack()'></span>
+
+  <div>
+
+
+    <div >
+        <div class="font-weight-bold d-flex justify-content-center">Abilities</div>
+     <div class="d-flex justify-content-center"> <span *ngFor = 'let ability of abilities' class="m-2">{{ability.ability.name}}</span></div>
+    </div>
+
+
+
+    <div class="centered">
+      <div class="font-weight-bold d-flex justify-content-center">Moves</div>
+   <div class="row"> <span *ngFor = 'let move of moves' class="m-2 col-3 text-center" >{{move.move.name}}</span></div>
+  </div>
+  </div>
+
+ </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<router-outlet></router-outlet>
